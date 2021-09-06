@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Lista de Estudantes</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+
+
+<body>
+
+	<div class="panel panel-default" style="margin: 80px">
+		<div class="panel-heading">
+			<h1 class="panel-title display-3">Lista de Estudantes</h1>
+		</div>
+		<div class="panel-body">
+
+
+	<!--<form class="form-inline" method="POST" th:object="${convidado}" th:action="@{/convidados}" style="margin: 20px 0">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Nome" th:field="*{nome}"/>
+					<input type="text" class="form-control" placeholder="Acompanhantes" th:field="*{qtdeAcom}" />
+					<button type="submit" class="btn btn-primary">Adicionar</button>	
+				</div>
+			</form>-->
+
+
+	
+		<table class="table table-hover">
+			<thead class="thead-dark">
+				<tr>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Fone</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="est : ${estudantes}">
+					<td th:text="${est.nome}" class="align-middle"></td>
+					<td th:text="${est.email}" class="align-middle"></td>
+					<td th:text="${est.fone}" class="align-middle"> </td>
+					<td>
+						<button type="button" class="btn btn-primary">Editar</button>
+						<button type="button" class="btn btn-danger">Deletar</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+</body>
+
+
+
+
+
+
+
+
+</html>
