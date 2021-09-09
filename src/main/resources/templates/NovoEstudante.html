@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Novo Estudante</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+
+
+<body>
+
+	<div class="panel panel-default mt-5 mb-2" style="margin: 80px">
+		<div class="panel-heading">
+			<h1 class="panel-title display-3">Adicionar Estudante</h1>
+		</div>
+		<div class="panel-body">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<div class="card-body">
+					<form th:action="@{/estudantes}" th:object="${estu}" method="POST">
+						<div class="form-group">
+							<label>Primeiro nome:</label>
+							<input type="text" name="nome" th:field="*{estu.nome}" 
+							class="form-control" placeholder="Digite o nome"/>
+
+							<label>Endereço:</label>
+							<input type="text" name="ende" th:field="*{estu.ende}" 
+							class="form-control" placeholder="Digite o endereço"/>
+
+							<label>Telefone:</label>
+							<input type="text" name="fone" th:field="*{estu.fone}" 
+							class="form-control" placeholder="Digite o telefone"/>
+
+							<label>Email:</label>
+							<input type="text" name="email" th:field="*{estu.email}" 
+							class="form-control" placeholder="Digite o email"/>
+						</div>
+
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">Adicionar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

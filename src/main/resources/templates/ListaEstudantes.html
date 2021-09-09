@@ -13,20 +13,17 @@
 
 <body>
 
-	<div class="panel panel-default" style="margin: 80px">
+	<div class="panel panel-default mt-5 mb-2" style="margin: 80px">
 		<div class="panel-heading">
 			<h1 class="panel-title display-3">Lista de Estudantes</h1>
 		</div>
 		<div class="panel-body">
-
-
-	<!--<form class="form-inline" method="POST" th:object="${convidado}" th:action="@{/convidados}" style="margin: 20px 0">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Nome" th:field="*{nome}"/>
-					<input type="text" class="form-control" placeholder="Acompanhantes" th:field="*{qtdeAcom}" />
-					<button type="submit" class="btn btn-primary">Adicionar</button>	
-				</div>
-			</form>-->
+		
+		<div class="row">
+			<div>
+				<a th:href="@{/estudantes/novo}" class="btn btn-primary mb-3 ml-3">Adicionar estudante</a>
+			</div>
+		</div>
 
 
 	

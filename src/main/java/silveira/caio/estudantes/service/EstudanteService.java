@@ -17,4 +17,8 @@ public class EstudanteService {
 	public List<Estudante> getAllEstudantes(){
 		return repo.findAll();
 	}
+	
+	public Estudante saveEstudante(Estudante estu) {
+		return repo.save(estu);
+	}
 }
