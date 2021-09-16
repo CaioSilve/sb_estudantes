@@ -42,8 +42,8 @@
 					<td th:text="${est.email}" class="align-middle"></td>
 					<td th:text="${est.fone}" class="align-middle"> </td>
 					<td>
-						<button type="button" class="btn btn-primary">Editar</button>
-						<button type="button" class="btn btn-danger">Deletar</button>
+						<a th:href="@{/estudantes/editar/{id}(id=${est.matri})}" class="btn btn-primary">Editar</a>
+						<a th:href="@{/estudantes/deletar/{id}(id=${est.matri})}" class="btn btn-danger ml-3">Deletar</a>
 					</td>
 				</tr>
 			</tbody>

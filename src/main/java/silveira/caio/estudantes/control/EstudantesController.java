@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,10 +49,54 @@ public class EstudantesController {
 	
 	@PostMapping
 	public ModelAndView saveEstudante(@ModelAttribute("estu") Estudante estu) {
-		ModelAndView mv = new ModelAndView("Estudantes");
+		ModelAndView mv = new ModelAndView("redirect:/estudantes");
 		
-		serv.saveEstudante(estu);
 		mv.setStatus(HttpStatus.OK);
+		try {
+			serv.saveEstudante(estu);
+		} catch (Exception e) {
+			mv.setStatus(HttpStatus.BAD_REQUEST);
+		}
+		
+		return mv;
+	}
+	
+	@GetMapping("/editar/{id}")
+	public ModelAndView editEstudanteForm(@PathVariable Long id) {
+		ModelAndView mv = new ModelAndView("EditarEstudante");
+		
+		mv.setStatus(HttpStatus.OK);
+		mv.addObject("estu", serv.getEstudanteById(id));
+		
+		if(serv.getEstudanteById(id) == null) mv.setStatus(HttpStatus.BAD_REQUEST);
+		
+		
+		return mv;
+	}
+	
+	@PostMapping("/{id}")
+	public ModelAndView updateEstudante(@PathVariable Long id, @ModelAttribute("estu") Estudante estu) {
+		ModelAndView mv = new ModelAndView("redirect:/estudantes");
+		
+		Estudante old = serv.getEstudanteById(id);
+		old.setNome(estu.getNome());
+		old.setEnde(estu.getEnde());
+		old.setEmail(estu.getEmail());
+		old.setFone(estu.getFone());
+		
+		serv.updateEstudante(old);
+		
+		return mv;
+	}
+	
+	
+	@GetMapping("/deletar/{id}")
+	public ModelAndView deleteEstudante(@PathVariable Long id) {
+		ModelAndView mv = new ModelAndView("redirect:/estudantes");
+		
+		mv.setStatus(HttpStatus.OK);
+		
+		serv.deleteEstudanteById(id);
 		
 		
 		return mv;
@@ -59,9 +104,13 @@ public class EstudantesController {
 	
 	
 	
-	
-	
-	
-	
-	
 }
+	
+	
+	
+	
+	
+	
+	
+	
+
